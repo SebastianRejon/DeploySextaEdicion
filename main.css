@@ -1,0 +1,49 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+    background-color: silver;
+    height: 600px;
+    width: 600px;
+    margin: 150px auto;
+}
+.title{
+    text-transform: uppercase;
+    text-align: center;
+}
+.butacas{
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+}
+.asiento{
+    float:left;
+    width:40px;
+    height: 40px;
+    background-color: yellowgreen;
+    line-height: 40px;
+    text-align: center;
+    border:1px solid black;
+}
+.asiento:hover{
+    background-color: red;
+}
+.asiento__tocado{
+    float:left;
+    width:40px;
+    height: 40px;
+    background-color: red;
+    line-height: 40px;
+    text-align: center;
+    border:1px solid black;
+}
+.finalizar{
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    margin-left: 100px;
+}
