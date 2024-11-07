@@ -9,7 +9,6 @@ function creaAsientos(){
     let asientos=document.getElementById("butacas");
     let f=0;
     let c=0;
-    let z=0;
     asientos.innerHTML="";
     for (i=0;i<100;i++){
         let asiento=document.createElement("p");
@@ -79,23 +78,6 @@ function setDatosFuncion(){
     datosFuncion.push(nombreFuncion);
     datosFuncion.push(precioFuncion);
 }
-// VIEJA FUNCION DE VENTA LOGICA
-// function venta(){
-//     let fila,butaca;
-//     fila=validaButaca();
-//     while (fila!=-1){
-//         butaca=validaButaca();
-//         if(butacas[fila][butaca]=="L"){
-//             console.log("Precio: ",datosFuncion[1]);
-//             butacas[fila][butaca]="X";
-//             cantButacasVendidas=cantButacasVendidas+1;
-//             ganancias=ganancias+datosFuncion[1];
-//         }else{
-//             alert("Butaca Ocupada");
-//         }
-//         fila=validaButaca();
-//     }
-// }
 function venta(x,y){
     if(butacas[x][y]=="L"){
         butacas[x][y]="X";
@@ -107,14 +89,50 @@ function venta(x,y){
     }
 }
 function informeVenta(){
-    console.log("Funcion: ",datosFuncion[0]);
-    console.log("Butacas Vendidas: ",cantButacasVendidas);
-    console.log("Ganancia: ",ganancias);
+    // INFORME VIEJO POR CONSOLA 
+    // console.log("Funcion: ",datosFuncion[0]);
+    // console.log("Butacas Vendidas: ",cantButacasVendidas);
+    // console.log("Ganancia: ",ganancias);
+    // Obtengo la caja del informe donde colocare el texto
+    const cajaInforme=document.getElementById("informe_contenido");
+    // limpio contenido viejo
+    cajaInforme.innerHTML="";
+    // creo los parrafos donde vuelvo la info
+    let nomFuncion=document.createElement("p");
+    let cantButacas=document.createElement("p");
+    let cantReacudado=document.createElement("p");
+    let botonCierre=document.createElement("button");
+    // les agrego el contenido
+    nomFuncion.innerHTML=`Función: ${datosFuncion[0]}`;
+    cantButacas.innerHTML=`Butacas Vendidas: ${cantButacasVendidas}`;
+    cantReacudado.innerHTML=`Ganancia: ${ganancias}`;
+    // agrego clases e id
+    nomFuncion.className="parrafoInforme";
+    cantButacas.className="parrafoInforme";
+    cantReacudado.className="parrafoInforme";
+    // los sumo a la caja detino
+    cajaInforme.appendChild(nomFuncion);
+    cajaInforme.appendChild(cantButacas);
+    cajaInforme.appendChild(cantReacudado);
+    const informe=document.getElementById("informe");
+    informe.classList.toggle("informe__activo");  
+    setTimeout(reset,3000);
 }
 function principal(){
     setButacas();
     creaAsientos();
     setDatosFuncion();
+}
+function reset(){
+    /*
+    1-volver a cambiar "informe__activo" -> "informe"
+    2-principal()
+    */
+    const a=document.getElementById("butacas");
+    const b=document.getElementById("informe");
+    b.className="informe";
+    a.innerHTML="";
+    principal();
 }
 /* FIN FUNCIONES */
 /* DECLARAR ARREGLOS Y DEMAS VAR*/
